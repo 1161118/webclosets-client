@@ -1,0 +1,174 @@
+<p>
+  Items
+</p>
+<div class="row">
+  <div class="column">
+    <button (click)="getItems()">Get all Items</button>
+    <br/>
+    <br/>
+    <hr>
+    <br/>
+    <button (click)="getItem()">Get Item</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idItem" [(ngModel)]="idGetItem"/>
+  </div>
+
+  <div class="column">
+
+    <button (click)="deleteItem()">Delete Item</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idItemDelete" [(ngModel)]="idDeleteItem" [ngModelOptions]="{standalone: true}"/>
+  </div>
+
+  <div class="column">
+    <label>Introduzir ID do Prod:</label>
+    <input type="text" id="idProdItemPost" [(ngModel)]="idProdItemPost"/>
+    <br/>
+
+    <label>Introduzir o height:</label>
+    <input type="text" id="heightItemPost" [(ngModel)]="heightItemPost"/>
+    <br/>
+
+    <label>Selecionar a width :</label>
+    <input type="text" id="widthItemPost" [(ngModel)]="widthItemPost"/>
+    <br/>
+
+    <label>Selecionar a depth :</label>
+    <input type="text" id="depthItemPost" [(ngModel)]="depthItemPost"/>
+    <br/>
+
+    <label>Selecionar o material :</label>
+    <input type="text" id="materialItemPost" [(ngModel)]="materialItemPost"/>
+    <br/>
+
+    <button (click)="postItem()"> Post item</button>
+  </div>
+
+  <div class="column">
+    <label>Introduzir ID do item a alterar:</label>
+    <input type="text" id="idItemPut" [(ngModel)]="idPutItem"/>
+    <br/>
+
+    <label>Introduzir ID do prod a alterar:</label>
+    <input type="text" id="idProdItemPut" [(ngModel)]="idProdItemPut"/>
+    <br/>
+
+    <label>Introduzir height:</label>
+    <input type="text" id="parentProductPut" [(ngModel)]="heightItemPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir width:</label>
+    <input type="text" id="childProductPut" [(ngModel)]="widthItemPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir depth:</label>
+    <input type="text" id="optionalPut" [(ngModel)]="depthItemPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir finish:</label>
+    <input type="text" id="finishPut" [(ngModel)]="finishItemPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir materialId:</label>
+    <input type="text" id="materialIdPut" [(ngModel)]="materialItemPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+    <button (click)="puttItem()"> Put Item</button>
+  </div>
+
+</div>
+
+
+<br/>
+<br/>
+<hr>
+<hr>
+
+
+<a *ngFor="let item of items" class="col-1-4">
+  <div class="column">
+    <div class="card">
+      <h4>Item id: {{item._id}}</h4>
+      <h4>ItemChilds id: {{item.childItems}}</h4>
+      <h4>Product id: {{item.product_id}}</h4>
+      <h4>Height: {{item.height}}</h4>
+      <h4>Width: {{item.width}}</h4>
+      <h4>Depth: {{item.depth}}</h4>
+      <h4>Material id: {{item.material_id}}</h4>
+      <!--<h4>Finish id: POR IMPLEMENTAR</h4>-->
+      <h4>----------------------------------------</h4>
+    </div>
+    <br/>
+  </div>
+</a>
+
+
+<a *ngIf="item != null">
+  <div class="column">
+    <div class="card">
+      <h4> GET ITEM BY ID : {{item._id}} </h4>
+      <h4>----------------------------------------</h4>
+      <h4>Item id: {{item._id}}</h4>
+      <h4>ItemChilds id: {{item.childItems}}</h4>
+      <h4>Product id: {{item.product_id}}</h4>
+      <h4>Height: {{item.height}}</h4>
+      <h4>Width: {{item.width}}</h4>
+      <h4>Depth: {{item.depth}}</h4>
+      <h4>Material id: {{item.material_id}}</h4>
+      <h4>----------------------------------------</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="posttItem != null">
+  <div class="column">
+    <div class="card">
+      <h4> POSTED ITEM ID : {{posttItem._id}} </h4>
+      <h4>----------------------------------------</h4>
+      <h4>Item id: {{posttItem._id}}</h4>
+      <h4>ItemChilds id: {{posttItem.childItems}}</h4>
+      <h4>Product id: {{posttItem.product_id}}</h4>
+      <h4>Height: {{posttItem.height}}</h4>
+      <h4>Width: {{posttItem.width}}</h4>
+      <h4>Depth: {{posttItem.depth}}</h4>
+      <h4>Material id: {{posttItem.material_id}}</h4>
+      <h4>----------------------------------------</h4>
+    </div>
+  </div>
+</a>
+
+<a *ngIf="delItem != null">
+  <div class="column">
+    <div class="card">
+      <h4> DELETED ITEM ID : {{delItem._id}} </h4>
+      <h4>----------------------------------------</h4>
+      <h4>Item id: {{delItem._id}}</h4>
+      <h4>ItemChilds id: {{delItem.childItems}}</h4>
+      <h4>Product id: {{delItem.product_id}}</h4>
+      <h4>Height: {{delItem.height}}</h4>
+      <h4>Width: {{delItem.width}}</h4>
+      <h4>Depth: {{delItem.depth}}</h4>
+      <h4>Material id: {{delItem.material_id}}</h4>
+      <h4>----------------------------------------</h4>
+    </div>
+  </div>
+</a>
+
+<a *ngIf="putItem != null">
+  <div class="column">
+    <div class="card">
+      <h4> PUT ITEM ID : {{putItem._id}} </h4>
+      <h4>----------------------------------------</h4>
+      <h4>Item id: {{putItem._id}}</h4>
+      <h4>ItemChilds id: {{putItem.childItems}}</h4>
+      <h4>Product id: {{putItem.product_id}}</h4>
+      <h4>Height: {{putItem.height}}</h4>
+      <h4>Width: {{putItem.width}}</h4>
+      <h4>Depth: {{putItem.depth}}</h4>
+      <h4>Material id: {{putItem.material_id}}</h4>
+      <h4>----------------------------------------</h4>
+    </div>
+  </div>
+</a>

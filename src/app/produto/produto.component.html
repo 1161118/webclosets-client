@@ -1,0 +1,237 @@
+<p>
+  Produtos
+</p>
+
+
+<div class="row">
+  <div class="column">
+    <button (click)="getProducts()">Get all produtos</button>
+    <br/>
+    <br/>
+    <hr>
+    <br/>
+    <button (click)="getProduct()">Get produto</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idProd" [(ngModel)]="idGetProduto"/>
+  </div>
+
+  <div class="column">
+    <button (click)="deleteProduct()">Delete produto</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idProdDelete" [(ngModel)]="idDeleteProduto"/>
+  </div>
+
+  <div class="column">
+    <label>Introduzir nome do Produto:</label>
+    <input type="text" id="nomeProdPost" [(ngModel)]="namePostProduto"/>
+    <br/>
+
+    <label>Introduzir o ID do material:</label>
+    <input type="text" id="materialsProdPost" [(ngModel)]="materialPostProduto"/>
+    <br/>
+
+    <label>Introduzir o ID da categoria:</label>
+    <input type="text" id="categoryProdPost" [(ngModel)]="categoryPostProduto"/>
+    <br/>
+
+    <label>Introduzir o ID da dimension:</label>
+    <input type="text" id="dimensionProdPost" [(ngModel)]="dimensionPostProduto"/>
+    <br/>
+
+    <button (click)="postProduto()"> Post produto</button>
+  </div>
+
+  <div class="column">
+    <label>Introduzir ID do produto a alterar:</label>
+    <br/>
+    <input type="text" id="idProdPut" [(ngModel)]="idPutProduto"/>
+    <br/>
+
+    <label>Introduzir o ID do material:</label>
+    <input type="text" id="materialsProdPut" [(ngModel)]="materialPutProduto"/>
+    <br/>
+
+    <label>Introduzir o ID da categoria:</label>
+    <input type="text" id="categoryProdPut" [(ngModel)]="categoryPutProduto"/>
+    <br/>
+
+    <label>Introduzir o ID da dimension:</label>
+    <input type="text" id="dimensionProdPut" [(ngModel)]="dimensionPutProduto"/>
+    <br/>
+
+    <button (click)="putProduto()"> Put produto</button>
+  </div>
+
+
+</div>
+
+<br/>
+<br/>
+<hr>
+<hr>
+
+<div class="row">
+  <a *ngFor="let produto of products">
+    <div class="column">
+      <div class="card">
+        <h4>Product id: {{produto.id}}</h4>
+        <h4>Product name: {{produto.name}}</h4>
+        <h4>Product parentId: {{produto.parentProductId}}</h4>
+        <h4>Product childProductsId: {{produto.childProductsIds}}</h4>
+        <h4>Product materialsIds: {{produto.materialsIds}}</h4>
+        <h4>Product categoryId: {{produto.categoryId}}</h4>
+        <h4>Product dimensions.id: {{produto.dimensions.id}}</h4>
+        <br/>
+        <h4>Dimension height id: {{produto.dimensions.height.id}}</h4>
+        <h4>Dimension height discrete: {{produto.dimensions.height.discreteValues}}</h4>
+        <h4>Dimension height contInitial: {{produto.dimensions.height.continuousInitial}}</h4>
+        <h4>Dimension height contfinal: {{produto.dimensions.height.continuousFinal}}</h4>
+        <br/>
+        <h4>Dimension width id: {{produto.dimensions.width.id}}</h4>
+        <h4>Dimension width discrete: {{produto.dimensions.width.discreteValues}}</h4>
+        <h4>Dimension width contInitial: {{produto.dimensions.width.continuousInitial}}</h4>
+        <h4>Dimension width contfinal: {{produto.dimensions.width.continuousFinal}}</h4>
+        <br/>
+        <h4>Dimension depth id: {{produto.dimensions.depth.id}}</h4>
+        <h4>Dimension depth discrete: {{produto.dimensions.depth.discreteValues}}</h4>
+        <h4>Dimension depth contInitial: {{produto.dimensions.depth.continuousInitial}}</h4>
+        <h4>Dimension depth contfinal: {{produto.dimensions.depth.continuousFinal}}</h4>
+      </div>
+      <br/>
+    </div>
+  </a>
+  <br/>
+</div>
+
+
+<a *ngIf="produto != null">
+  <div class="column">
+    <div class="card">
+      <h4> GET PRODUTO BY ID : {{produto.id}} </h4>
+      <br/>
+      <h4>Product id: {{produto.id}}</h4>
+      <h4>Product name: {{produto.name}}</h4>
+      <h4>Product parentId: {{produto.parentProductId}}</h4>
+      <h4>Product childProductsId: {{produto.childProductsIds}}</h4>
+      <h4>Product materialsIds: {{produto.materialsIds}}</h4>
+      <h4>Product categoryId: {{produto.categoryId}}</h4>
+      <h4>Product dimensions.id: {{produto.dimensions.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{produto.dimensions.height.id}}</h4>
+      <h4>Dimension height discrete: {{produto.dimensions.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{produto.dimensions.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{produto.dimensions.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{produto.dimensions.width.id}}</h4>
+      <h4>Dimension width discrete: {{produto.dimensions.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{produto.dimensions.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{produto.dimensions.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{produto.dimensions.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{produto.dimensions.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{produto.dimensions.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{produto.dimensions.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="delProduto != null">
+  <div class="column">
+    <div class="card">
+      <h4> DELETED PRODUTO ID : {{delProduto.id}} </h4>
+      <br/>
+      <h4>Product id: {{delProduto.id}}</h4>
+      <h4>Product name: {{delProduto.name}}</h4>
+      <h4>Product parentId: {{delProduto.parentProductId}}</h4>
+      <h4>Product childProductsId: {{delProduto.childProductsIds}}</h4>
+      <h4>Product materialsIds: {{delProduto.materialsIds}}</h4>
+      <h4>Product categoryId: {{delProduto.categoryId}}</h4>
+      <h4>Product dimensions.id: {{delProduto.dimensions.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{delProduto.dimensions.height.id}}</h4>
+      <h4>Dimension height discrete: {{delProduto.dimensions.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{delProduto.dimensions.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{delProduto.dimensions.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{delProduto.dimensions.width.id}}</h4>
+      <h4>Dimension width discrete: {{delProduto.dimensions.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{delProduto.dimensions.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{delProduto.dimensions.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{delProduto.dimensions.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{delProduto.dimensions.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{delProduto.dimensions.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{delProduto.dimensions.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="postProduct != null">
+
+  <div class="column">
+    <div class="card">
+      <h4> POSTED PRODUTO ID : {{postProduct.id}} </h4>
+      <br/>
+      <h4>Product id: {{postProduct.id}}</h4>
+      <h4>Product name: {{postProduct.name}}</h4>
+      <h4>Product parentId: {{postProduct.parentProductId}}</h4>
+      <h4>Product childProductsId: {{postProduct.childProductsIds}}</h4>
+      <h4>Product materialsIds: {{postProduct.materialsIds}}</h4>
+      <h4>Product categoryId: {{postProduct.categoryId}}</h4>
+      <h4>Product dimensions.id: {{postProduct.dimensions.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{postProduct.dimensions.height.id}}</h4>
+      <h4>Dimension height discrete: {{postProduct.dimensions.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{postProduct.dimensions.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{postProduct.dimensions.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{postProduct.dimensions.width.id}}</h4>
+      <h4>Dimension width discrete: {{postProduct.dimensions.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{postProduct.dimensions.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{postProduct.dimensions.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{postProduct.dimensions.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{postProduct.dimensions.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{postProduct.dimensions.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{postProduct.dimensions.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="putProduct != null">
+  <div class="column">
+    <div class="card">
+      <h4> PUTTED PRODUTO ID : {{putProduct.id}} </h4>
+      <br/>
+      <h4>Product id: {{putProduct.id}}</h4>
+      <h4>Product name: {{putProduct.name}}</h4>
+      <h4>Product parentId: {{putProduct.parentProductId}}</h4>
+      <h4>Product childProductsId: {{putProduct.childProductsIds}}</h4>
+      <h4>Product materialsIds: {{putProduct.materialsIds}}</h4>
+      <h4>Product categoryId: {{putProduct.categoryId}}</h4>
+      <h4>Product dimensions.id: {{putProduct.dimensions.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{putProduct.dimensions.height.id}}</h4>
+      <h4>Dimension height discrete: {{putProduct.dimensions.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{putProduct.dimensions.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{putProduct.dimensions.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{putProduct.dimensions.width.id}}</h4>
+      <h4>Dimension width discrete: {{putProduct.dimensions.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{putProduct.dimensions.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{putProduct.dimensions.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{putProduct.dimensions.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{putProduct.dimensions.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{putProduct.dimensions.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{putProduct.dimensions.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+

@@ -1,0 +1,198 @@
+<p>
+  Dimensions
+</p>
+
+<div class="row">
+  <div class="column">
+    <button (click)="getDimensions()">Get all dimensions</button>
+    <br/>
+    <br/>
+    <hr>
+    <br/>
+    <button (click)="getDimension()">Get dimension</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idDim" [(ngModel)]="idGetDimensions"/>
+  </div>
+
+  <div class="column">
+    <button (click)="deleteDimensions()">Delete Dimensions</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idDimensionDelete" [(ngModel)]="idDeleteDimensions"/>
+  </div>
+
+  <div class="column">
+    <label>Introduzir ID da Height:</label>
+    <input type="text" id="heightDimPost" [(ngModel)]="discreteValueHeight"/>
+    <br/>
+
+    <label>Introduzir o ID do Width:</label>
+    <input type="text" id="widthDimPost" [(ngModel)]="discreteValueWidth"/>
+    <br/>
+
+    <label>Introduzir o ID da Depth:</label>
+    <input type="text" id="depthDimPost" [(ngModel)]="discreteValueDepth"/>
+    <br/>
+
+    <button (click)="postDimension()"> Post dimension</button>
+  </div>
+
+  <div class="column">
+
+    <label>Introduzir ID da Dimension a alterar:</label>
+    <input type="text" id="idDimPut" [(ngModel)]="idPutDimensions"/>
+    <br/>
+
+    <label>Introduzir ID da Height:</label>
+    <input type="text" id="heightDimPut" [(ngModel)]="discreteValueHeightPut"/>
+    <br/>
+
+    <label>Introduzir o ID do Width:</label>
+    <input type="text" id="widthDimPut" [(ngModel)]="discreteValueWidthPut"/>
+    <br/>
+
+    <label>Introduzir o ID da Depth:</label>
+    <input type="text" id="depthDimPut" [(ngModel)]="discreteValueDepthPut"/>
+    <br/>
+
+    <button (click)="putDimension()"> Put dimension</button>
+  </div>
+
+</div>
+
+
+<br/>
+<br/>
+<hr>
+<hr>
+
+<div class="grid grid-pad">
+  <a *ngFor="let d of dimensions">
+    <div class="column">
+      <div class="card">
+        <h4>Dimension id: {{d.id}}</h4>
+        <br/>
+        <h4>Dimension height id: {{d.height.id}}</h4>
+        <h4>Dimension height discrete: {{d.height.discreteValues}}</h4>
+        <h4>Dimension height contInitial: {{d.height.continuousInitial}}</h4>
+        <h4>Dimension height contfinal: {{d.height.continuousFinal}}</h4>
+        <br/>
+        <h4>Dimension width id: {{d.width.id}}</h4>
+        <h4>Dimension width discrete: {{d.width.discreteValues}}</h4>
+        <h4>Dimension width contInitial: {{d.width.continuousInitial}}</h4>
+        <h4>Dimension width contfinal: {{d.width.continuousFinal}}</h4>
+        <br/>
+        <h4>Dimension depth id: {{d.depth.id}}</h4>
+        <h4>Dimension depth discrete: {{d.depth.discreteValues}}</h4>
+        <h4>Dimension depth contInitial: {{d.depth.continuousInitial}}</h4>
+        <h4>Dimension depth contfinal: {{d.depth.continuousFinal}}</h4>
+      </div>
+      <br/>
+    </div>
+  </a>
+</div>
+
+
+<a *ngIf="dimension != null">
+  <div class="column">
+    <div class="card">
+      <h4> GET DIMENSION BY ID : {{dimension.id}} </h4>
+      <br/>
+      <h4>Dimension id: {{dimension.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{dimension.height.id}}</h4>
+      <h4>Dimension height discrete: {{dimension.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{dimension.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{dimension.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{dimension.width.id}}</h4>
+      <h4>Dimension width discrete: {{dimension.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{dimension.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{dimension.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{dimension.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{dimension.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{dimension.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{dimension.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="delDimension != null">
+  <div class="column">
+    <div class="card">
+      <h4> DELETE DIMENSION BY ID : {{delDimension.id}} </h4>
+      <br/>
+      <h4>Dimension id: {{delDimension.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{delDimension.height.id}}</h4>
+      <h4>Dimension height discrete: {{delDimension.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{delDimension.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{delDimension.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{delDimension.width.id}}</h4>
+      <h4>Dimension width discrete: {{delDimension.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{delDimension.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{delDimension.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{delDimension.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{delDimension.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{delDimension.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{delDimension.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="posDimension != null">
+  <div class="column">
+    <div class="card">
+      <h4> POST DIMENSION ID : {{posDimension.id}} </h4>
+      <br/>
+      <h4>Dimension id: {{posDimension.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{posDimension.height.id}}</h4>
+      <h4>Dimension height discrete: {{posDimension.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{posDimension.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{posDimension.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{posDimension.width.id}}</h4>
+      <h4>Dimension width discrete: {{posDimension.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{posDimension.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{posDimension.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{posDimension.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{posDimension.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{posDimension.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{posDimension.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>
+
+
+<a *ngIf="putDimensions != null">
+  <div class="column">
+    <div class="card">
+      <h4> PUT DIMENSION BY ID : {{putDimensions.id}} </h4>
+      <br/>
+      <h4>Dimension id: {{putDimensions.id}}</h4>
+      <br/>
+      <h4>Dimension height id: {{putDimensions.height.id}}</h4>
+      <h4>Dimension height discrete: {{putDimensions.height.discreteValues}}</h4>
+      <h4>Dimension height contInitial: {{putDimensions.height.continuousInitial}}</h4>
+      <h4>Dimension height contfinal: {{putDimensions.height.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension width id: {{putDimensions.width.id}}</h4>
+      <h4>Dimension width discrete: {{putDimensions.width.discreteValues}}</h4>
+      <h4>Dimension width contInitial: {{putDimensions.width.continuousInitial}}</h4>
+      <h4>Dimension width contfinal: {{putDimensions.width.continuousFinal}}</h4>
+      <br/>
+      <h4>Dimension depth id: {{putDimensions.depth.id}}</h4>
+      <h4>Dimension depth discrete: {{putDimensions.depth.discreteValues}}</h4>
+      <h4>Dimension depth contInitial: {{putDimensions.depth.continuousInitial}}</h4>
+      <h4>Dimension depth contfinal: {{putDimensions.depth.continuousFinal}}</h4>
+    </div>
+  </div>
+</a>

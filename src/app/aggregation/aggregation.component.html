@@ -1,0 +1,144 @@
+<p>
+  Aggregation
+</p>
+<div class="row">
+  <div class="column">
+    <button (click)="getAggregations()">Get all aggregations</button>
+    <br/>
+    <br/>
+    <hr>
+    <br/>
+    <button (click)="getAggregation()">Get aggregation</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idAgg" [(ngModel)]="idGetAggregation" [ngModelOptions]="{standalone: true}"/>
+  </div>
+
+  <div class="column">
+    <button (click)="deleteAggregation()">Delete aggregation</button>
+    <br/>
+    <label>Introduzir ID:</label>
+    <input type="text" id="idAggDelete" [(ngModel)]="idDeleteAggregation" [ngModelOptions]="{standalone: true}"/>
+  </div>
+
+  <div class="column">
+    <label>Introduzir ID do parent:</label>
+    <input type="text" id="parentAggregationPost" [(ngModel)]="parentAggreg" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir o ID do child:</label>
+    <input type="text" id="childAggregationPost" [(ngModel)]="childProductId" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Selecionar a opcao se e opcional:</label>
+    <input type="checkbox" id="optionalPost" [(ngModel)]="optional" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <button (click)="postAggregation()"> Post aggregation</button>
+  </div>
+
+  <div class="column">
+
+    <label>Introduzir ID da aggregation a alterar:</label>
+    <input type="text" id="idAggregPut" [(ngModel)]="idPutAggreg" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir ID da parent:</label>
+    <input type="text" id="parentProductPut" [(ngModel)]="parentPutAggreg" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir o ID da child:</label>
+    <input type="text" id="childProductPut" [(ngModel)]="childPutId" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <label>Introduzir se é opcional:</label>
+    <input type="checkbox" id="optionalPut" [(ngModel)]="optionalPut" [ngModelOptions]="{standalone: true}"/>
+    <br/>
+
+    <button (click)="putAggregation()"> Put aggregation</button>
+  </div>
+</div>
+
+
+
+<br/>
+<br/>
+<hr>
+<hr>
+
+
+  <a *ngFor="let ag of aggregations" class="col-1-4">
+    <div class="column">
+      <div class="card">
+        <h4>Aggregations id: {{ag.id}}</h4>
+        <h4>Aggregations childId: {{ag.childProductId}}</h4>
+        <h4>Aggregations parentId: {{ag.parentProductId}}</h4>
+        <h4>Aggregations optional: {{ag.optional}}</h4>
+      </div>
+      <br/>
+    </div>
+  </a>
+
+
+
+  <a *ngIf="aggregation != null">
+    <div class="column">
+      <div class="card">
+        <h4> GET AGGREGATION BY ID : {{aggregation.id}} </h4>
+        <br/>
+        <h4>Aggregations id: {{aggregation.id}}</h4>
+        <h4>Aggregations childId: {{aggregation.childProductId}}</h4>
+        <h4>Aggregations parentId: {{aggregation.parentProductId}}</h4>
+        <h4>Aggregations optional: {{aggregation.optional}}</h4>
+        <br/>
+      </div>
+    </div>
+  </a>
+
+
+  <a *ngIf="delAggreg != null">
+    <div class="column">
+      <div class="card">
+        <h4> DELETED Aggregation ID : {{delAggreg.id}} </h4>
+        <br/>
+        <h4>Aggregations id: {{delAggreg.id}}</h4>
+        <h4>Aggregations childId: {{delAggreg.childProductId}}</h4>
+        <h4>Aggregations parentId: {{delAggreg.parentProductId}}</h4>
+        <h4>Aggregations optional: {{delAggreg.optional}}</h4>
+        <br/>
+      </div>
+    </div>
+  </a>
+
+
+  <a *ngIf="postAggreg != null">
+    <div class="column">
+      <div class="card">
+        <h4> POST Aggregation ID : {{postAggreg.id}} </h4>
+        <br/>
+        <h4>Aggregations id: {{postAggreg.id}}</h4>
+        <h4>Aggregations childId: {{postAggreg.childProductId}}</h4>
+        <h4>Aggregations parentId: {{postAggreg.parentProductId}}</h4>
+        <h4>Aggregations optional: {{postAggreg.optional}}</h4>
+        <br/>
+      </div>
+    </div>
+  </a>
+
+
+
+  <a *ngIf="putAggreg != null">
+    <div class="column">
+      <div class="card">
+        <h4> PUT Aggregation ID : {{putAggreg.id}} </h4>
+        <br/>
+        <h4>Aggregations id: {{putAggreg.id}}</h4>
+        <h4>Aggregations childId: {{putAggreg.childProductId}}</h4>
+        <h4>Aggregations parentId: {{putAggreg.parentProductId}}</h4>
+        <h4>Aggregations optional: {{putAggreg.optional}}</h4>
+        <br/>
+      </div>
+    </div>
+  </a>
+
+
